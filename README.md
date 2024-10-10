@@ -22,6 +22,10 @@ This guide will show you how to integrate Unifi with pfSense and Tailscale using
 - Setting up a Tailscale tailnet
 - Installing Tailscale client on a remote device
 
+## Important Notes
+
+By using OSPF on Unifi, this may not allow you to use the Unifi Site Magic as it requires OSPF to be disabled.
+
 ## Unifi Configuration
 
 On your Unifi Gateway, you will need to configure the following:
