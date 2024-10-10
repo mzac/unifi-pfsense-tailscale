@@ -34,6 +34,13 @@ On your Unifi Gateway, you will need to configure the following:
   - One for the Outside network for for pfSense to connect to the Internet
   - One for the Inside network for pfSense to peer with the Unifi Gateway with OSPF
   - Both networks should use static IP addresses
+  - In the example below we will use the following IP ranges:
+    - Tailscale tailnet: `100.64.0.0/10`
+    - Unifi Networks: `192.168.0.0/16`
+    - Outside network: `192.168.220.0/24`
+    - Inside network: `192.168.221.0/24`
+    - pfSense WAN IP: `192.168.220.11`
+    - pfSense LAN IP: `192.168.221.11`
 
 ### Unifi OSPF Configuration
 
