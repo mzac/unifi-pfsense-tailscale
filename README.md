@@ -320,28 +320,33 @@ See the following guides for more information:
 
 If you want to have multiple pfSense appliances in a high availability configuration (for upgrades, reboots etc), you can follow these steps:
 
-#### CARP Configuration
+#### Tailscale HA Configuration
 
 - Ensure that both pfSense appliances are connected to Tailscale
-- Configure CARP on the WAN or LAN interface on the first pfSense appliance with the following settings:
-  - Synchonize admin
-  - User manager, users and groups
-  - Authentication servers
-  - Firewall rules
-  - Firewall aliases
-  - DNS Forwarder and Resolver configuration
+- Advertise the same routes to the Tailscale tailnet from both pfSense appliances
+
+#### CARP Configuration
+
+Configure CARP on the WAN or LAN interface on the first pfSense appliance with the following settings:
+
+- Synchonize admin
+- User manager, users and groups
+- Authentication servers
+- Firewall rules
+- Firewall aliases
+- DNS Forwarder and Resolver configuration
 
 #### FRR OSPF Configuration
 
-- Configure FRR OSPF on both pfSense appliances with the same settings but modify the following:
+Configure FRR OSPF on both pfSense appliances with the same settings but modify the following:
 
-  - Under Services -> FRR OSPF -> Route Distribution
-    - FRR Static Routes
-      - Metric: `100`
+- Under Services -> FRR OSPF -> Route Distribution
+  - FRR Static Routes
+    - Metric: `100`
 
-  - Under Services -> FRR OSPF -> Interfaces -> LAN
-    - OSPF Interface Handling
-      - Metric: `1000`
+- Under Services -> FRR OSPF -> Interfaces -> LAN
+  - OSPF Interface Handling
+  - Metric: `1000`
 
 ## Conclusion
 
