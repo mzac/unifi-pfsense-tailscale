@@ -170,6 +170,14 @@ Under Services -> FRR OSPF, configure the following:
     - Metric: `10`
     - Route Map: `tailscale`
 
+#### FRR OSPF Interfaces
+
+Under Services -> FRR OSPF -> Interfaces, configure the following by clicking on `Add`:
+
+- Interface: `lan`
+- Ignore MTU: `Checked`
+- Area: `0.0.0.0`
+
 ### NAT Configuration
 
 Under Firewall -> NAT, configure the following:
@@ -305,6 +313,35 @@ See the following guides for more information:
 
 - <https://tailscale.com/kb/1081/magicdns>
 - <https://tailscale.com/kb/1381/what-is-quad100>
+
+## Optional Configurations
+
+### pfSense High Availability
+
+If you want to have multiple pfSense appliances in a high availability configuration (for upgrades, reboots etc), you can follow these steps:
+
+#### CARP Configuration
+
+- Ensure that both pfSense appliances are connected to Tailscale
+- Configure CARP on the WAN or LAN interface on the first pfSense appliance with the following settings:
+  - Synchonize admin
+  - User manager, users and groups
+  - Authentication servers
+  - Firewall rules
+  - Firewall aliases
+  - DNS Forwarder and Resolver configuration
+
+#### FRR OSPF Configuration
+
+- Configure FRR OSPF on both pfSense appliances with the same settings but modify the following:
+
+  - Under Services -> FRR OSPF -> Route Distribution
+    - FRR Static Routes
+      - Metric: `100`
+
+  - Under Services -> FRR OSPF -> Interfaces -> LAN
+    - OSPF Interface Handling
+      - Metric: `1000`
 
 ## Conclusion
 
