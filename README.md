@@ -6,6 +6,10 @@ Guide on how to integrate Unifi with pfSense and Tailscale using OSPF
 
 This guide will show you how to integrate Unifi with pfSense and Tailscale using OSPF. This will allow you to reach devices in your tailnet from your Unifi network and vice versa.
 
+## Network Diagram
+
+![Network Diagram](images/network-diagram.png)
+
 ## Requirements
 
 - A medium to advanced understanding of networking and routing protocols
